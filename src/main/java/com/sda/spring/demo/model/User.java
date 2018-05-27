@@ -18,6 +18,8 @@ public class User {
     private String city;
     private String postalcode;
     private String telephone;
+    private String name;
+    private String email;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Role role;
@@ -29,6 +31,8 @@ public class User {
 
     }
 
+
+
     public User(String username, String lastname, String password, String nick, String address, String city, String postalcode, String telephone, Role role) {
         this.username = username;
         this.lastname = lastname;
@@ -37,8 +41,11 @@ public class User {
         this.address = address;
         this.city = city;
         this.postalcode = postalcode;
+
         this.telephone = telephone;
         this.role = role;
+        this.name = name;
+        this.email = email;
     }
 
     public Role getRole() {
@@ -122,5 +129,21 @@ public class User {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
