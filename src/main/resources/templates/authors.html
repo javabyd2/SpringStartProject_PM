@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+</head>
+<body>
+<h2>Authors</h2>
+
+<table border="1">
+    <tr>
+        <th>Imie</th>
+        <th>Nazwisko</th>
+    </tr>
+
+    <tr th:each="author : ${authorsList}">
+        <td th:text="${author.getName()}"></td>
+        <td th:text="${author.getLastName()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

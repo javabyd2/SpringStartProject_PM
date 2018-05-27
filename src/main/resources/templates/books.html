@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista ksiazek</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>Tytul</th>
+        <th>Wydawca</th>
+        <th>Autorzy</th>
+        <th>Kategoria</th>
+    </tr>
+
+    <tr th:each="books : ${booksList}">
+        <td th:text="${books.getTitle()}"></td>
+        <td th:text="${books.getPublisher()}"></td>
+        <td th:text="${books.getAuthors()}"></td>
+        <td th:text="${books.getBookCategory()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

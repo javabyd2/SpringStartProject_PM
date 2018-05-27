@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista rol</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>Nazwa</th>
+    </tr>
+
+    <tr th:each="role : ${roleList}">
+        <td th:text="${roles.getName()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

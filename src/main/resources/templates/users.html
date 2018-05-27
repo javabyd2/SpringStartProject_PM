@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista uzytkownikow</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <th>Last name</th>
+        <th>Nick</th>
+    </tr>
+
+    <tr th:each="user : ${usersList}">
+        <td th:text="${user.geUsername()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getNick()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
