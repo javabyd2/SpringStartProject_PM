@@ -13,13 +13,6 @@ public class CategoryService {
 
     private CategoryRepository categoryRepository;
 
-    public List<BookCategory> getCategory() {
-        /*
-            dodatkowa logika
-        */
-        return categoryRepository.findAll();
-    }
-
     @Autowired
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;

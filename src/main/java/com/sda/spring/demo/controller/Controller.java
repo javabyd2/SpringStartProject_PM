@@ -4,6 +4,8 @@ import com.sda.spring.demo.dto.UserPropDTO;
 import com.sda.spring.demo.model.Book;
 import com.sda.spring.demo.model.BookAuthor;
 import com.sda.spring.demo.model.BookCategory;
+import com.sda.spring.demo.model.User;
+import com.sda.spring.demo.repository.BookRepository;
 import com.sda.spring.demo.service.AuthorService;
 import com.sda.spring.demo.service.BookService;
 import com.sda.spring.demo.service.CategoryService;
@@ -23,13 +25,13 @@ public class Controller {
     private BookService bookService;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private CategoryService categoryService;
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello(){
@@ -42,10 +44,6 @@ public class Controller {
         return bookService.getBooks();
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public List<UserPropDTO> showUserProp(){
-        return userService.getUsers();
-    }
 
     @RequestMapping(value = "/category", method = RequestMethod.POST)
     public BookCategory addCategory(
@@ -59,6 +57,12 @@ public class Controller {
             @RequestBody Book book
     ){
         return bookService.save(book);
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public List<UserPropDTO> showUsers(){
+
+        return userService.getUsers();
     }
 
     @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)

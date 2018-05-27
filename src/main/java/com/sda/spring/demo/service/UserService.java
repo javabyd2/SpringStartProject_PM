@@ -24,6 +24,7 @@ public class UserService {
     }
 
     public List<UserPropDTO> getUsers(){
+
         List<User> users = userRepository.findAll();
         ModelMapper modelMapper = new ModelMapper();
 

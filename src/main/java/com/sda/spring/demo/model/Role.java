@@ -8,21 +8,20 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private  Long id;
     private String name;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
     //private  User user;
+    Set<User>userSet;
 
-
-            Set<User> userSet;
 
 
     public void setUserSet(Set<User> userSet) {
         this.userSet = userSet;
     }
 
-    public Role() {
+    public Role(){
 
     }
 
@@ -31,6 +30,7 @@ public class Role {
 
 
     }
+
 
 
     public Long getId() {

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .validation-message{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/registration}" method="post" th:object="${user}">
+        <label>Email</label>
+        <input type="text" id="email"  th:field="*{email}" name="email"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}" class="validation-message"></label><br/>
+
+        <label>Imię</label>
+        <input type="text" id="name" name="name" th:field="*{name}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('name')}"
+                th:errors="*{name}" class="validation-message"></label><br/>
+
+        <label>Nazwisko</label>
+        <input type="text" id="lastname" name="lastname" th:field="*{lastname}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('lastname')}"
+                th:errors="*{lastname}" class="validation-message"></label><br/>
+
+        <label>Hasło</label>
+        <input type="password" id="password" name="password" th:field="*{password}"
+               class="form-control" /><br/>
+        <label  th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}" class="validation-message"></label><br/>
+
+        <button class="btn btn-lg" name="Submit" value="login" th:text="Login"></button>
+    </form>
+
+    <div class="alert alert-success" th:text="${successMessage}">
+
+    </div>
+
+</div>
+</body>
+</html>
