@@ -7,6 +7,7 @@ import com.sda.spring.demo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
@@ -18,6 +19,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public List<User> getUser(){
         return userRepository.findAll();
@@ -35,6 +39,10 @@ public class UserService {
         return userPropDTOS;
     }
 
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
+
     public UserDTO getUserById(Long id){
 
         Optional<User> user = userRepository.findById(id);
@@ -46,6 +54,13 @@ public class UserService {
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+    public void userSave(User user){
+        user.setPassword(
+                bCryptPasswordEncoder.encode(user.getPassword()));
+
+
+
     }
 }
 
